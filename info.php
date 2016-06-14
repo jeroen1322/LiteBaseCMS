@@ -4,8 +4,8 @@
 
 
 //CONNECTION INFO
-$host = 'localhost';
-$user = 'root';
-$passw = '';
-$db = 'LiteBaseCMS';
+$host = 'YOU HOST HERE';
+$user = 'YOUR USERNAME HERE';
+$passw = 'YOUR PASSWORD HERE';
+$db = 'YOUR DATABASE NAME HERE';
 $mysqli = new mysqli($host, $user, $passw);
