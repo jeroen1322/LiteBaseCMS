@@ -1,6 +1,7 @@
 body{
     width: 100%;   
     background-color: #9FD6A5;
+    padding-top: 15px;
 }
 
 #posts{
@@ -98,3 +99,4 @@ body{
 #del input[type=submit]{
     font-size: 10px;
 }
+
