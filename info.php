@@ -1,12 +1,18 @@
 <?php
-
 //This is super secret.... Sssshhhh
 
 
 //CONNECTION INFO
-$host = '';
-$user = '';
+$host = 'localhost';
+$user = 'root';
 $passw = '';
-$db = '';
+$db = 'litebasecms';
 $mysqli = new mysqli($host, $user, $passw);
-$conn = new mysqli($host, $user, $passw, $db);
+
+$dbSelect = mysqli_select_db($mysqli, 'litebasecms');
+
+if($dbSelect === TRUE){
+    $conn = new mysqli($host, $user, $passw, $db);
+} 
+
+
