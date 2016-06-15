@@ -24,8 +24,8 @@ function createTable($mysqli){
     $table = "CREATE TABLE IF NOT EXISTS articles (
             id int NOT NULL AUTO_INCREMENT,
             PRIMARY KEY(id),
-            title VARCHAR (255) NOT NULL,
-            text VARCHAR (255) NOT NULL,
+            title TEXT NOT NULL,
+            text TEXT NOT NULL,
             reg_date TIMESTAMP
     )";
     
