@@ -1,3 +1,5 @@
+
+
 <?php
 require (__dir__).'/info.php';
 require (__dir__).'/functions.php';
@@ -6,62 +8,49 @@ $dbSelect = mysqli_select_db($mysqli, 'litebasecms');
 
 
 //Check connection to the MYSQL server
-if($mysqli->connect_error){
-    die("Connection failed: " . $mysqli->connect_error);
-}
+checkDBCon($mysqli);
 //If the database does not exist yet, create it by calling the createDB function
+
 $dbSelect = mysqli_select_db($mysqli, 'litebasecms');
+
 if(! $dbSelect){
+    ?>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <div id="first_run">
+        <p>Hello there! This is the first time you've run this program so it needs a little setup before it is usable. <br> Give me a moment...</p>
+    <?php
     createDB($mysqli);
+    ?>
+    </div>
+<?php
 } else {
     createTable($mysqli);
     ?>
     <html>
         <head>
-            <title>BaseLiteCMS</title>
-            <style>
-                body{
-                    width: 100%;   
-                    background-color: #A1A1A1;
-                }
-                
-                #posts{
-                    background-color: #CACBCC;
-                    margin: auto;
-                    width: 60%;
-                    border: 1px solid #E1E4E6;
-                    padding: 10px;
-                    font-family: calibri;
-                }
-                
-                #title{
-                    text-align: center;
-                }
-                
-                #text{
-                    margin-left: 75px;
-                    margin-right: 75px;
-                    background-color: #D3D3D3;
-                    min-height: 70px;
-                    padding-top: 10px;
-                    padding-left: 20px;
-                    padding-right: 20px;
-                }
-                
-                #id{
-                    font-style: italic;
-                    font-size: 10px;
-                }
-                
-            </style>
+            <title>Frontpage - LiteBaseCMS</title>
+            <link rel="stylesheet" type="text/css" href="style/style.css">
         </head>
         <body>
             <div id="posts">
+                <div id="add">
+                    <ul>
+                        <li><a href="admin.php">Admin page</a></li>
+                        <li>|</li>
+                        <li><a href="https://github.com/jeroen1322/LiteBaseCMS">Github Page</a></li>
+                        <li>|</li>
+                        <li><a href="http://jeroengrooten.nl/#contact">Contact</a></li>
+                    </ul>
+                    <hr>
+                </div>
                 <?php 
                 if($dbSelect){
                     getPost($mysqli);
                 } 
                 ?>
+                <div id='footer'>
+                    <p>| Made with: <a href="https://github.com/jeroen1322/LiteBaseCMS" target="_blank">LiteBaseCMS</a> by: <a href="http://www.jeroengrooten.nl" target="_blank">Jeroen Grooten</a> |  </p>
+                </div>
             </div>
         </body>
     </html>
