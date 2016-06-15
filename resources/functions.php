@@ -41,10 +41,10 @@ function getPost($mysqli){
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
            // echo "<div id='del'><form action='./index.php' method='post'><input type=submit name='del' value='DEL'></form></div><br>";
-            echo "<div id='title'><h2> " . $row['title'] . "</h2></div>";
+            echo "<div id='title'><h4> " . $row['title'] . "</h4></div>";
             echo "<div id='text'> " . $row['text'] . "</div><br>";
             echo "<div id='id'>ID:  " . $row['id'] . "</div>";
-            echo "<div id='time'>" . $row['reg_date'] . "</div><br>";
+            echo "<div id='time'>Posted on: " . $row['reg_date'] . "</div><br>";
             echo "<hr>";
         }
     } else {
