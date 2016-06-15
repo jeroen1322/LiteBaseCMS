@@ -1,5 +1,5 @@
 <?php 
-require (__dir__).'/info.php';
+require 'resources/info.php';
 
 function checkDBCon($mysqli){
     if($mysqli->connect_error){
@@ -24,8 +24,8 @@ function createTable($mysqli){
     $table = "CREATE TABLE IF NOT EXISTS articles (
             id int NOT NULL AUTO_INCREMENT,
             PRIMARY KEY(id),
-            title VARCHAR (100) NOT NULL,
-            text VARCHAR (100) NOT NULL,
+            title VARCHAR (255) NOT NULL,
+            text VARCHAR (255) NOT NULL,
             reg_date TIMESTAMP
     )";
     
@@ -40,9 +40,11 @@ function getPost($mysqli){
     
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
+           // echo "<div id='del'><form action='./index.php' method='post'><input type=submit name='del' value='DEL'></form></div><br>";
             echo "<div id='title'><h2> " . $row['title'] . "</h2></div>";
             echo "<div id='text'> " . $row['text'] . "</div><br>";
             echo "<div id='id'>ID:  " . $row['id'] . "</div>";
+            echo "<div id='time'>" . $row['reg_date'] . "</div><br>";
             echo "<hr>";
         }
     } else {
@@ -54,8 +56,8 @@ function getPost($mysqli){
 function addPost($conn){
     if(isset($_POST['submit'])){
 
-        $title = $_POST['title'];
-        $text = $_POST['text'];
+        $title = htmlspecialchars($_POST['title']);
+        $text = htmlspecialchars($_POST['text']);
 
         $insert = "INSERT INTO articles (title, text) VALUES ('$title', '$text');";
         
@@ -65,5 +67,14 @@ function addPost($conn){
         } else {
             echo "<div id='posts'>Something went wrong while posting the article. <br> Have you filled in the title and text?</div>";
         }
+    }
+}
+
+function delPost($conn){
+    $deletePost = "DELETE FROM articles WHERE id = 2";
+    if($conn->query($deletePost)){
+        echo "<div id='posts'>The post was deleted succesfully!</div";
+    } else {
+        echo "<div id='posts'>Something went wrong.</div";
     }
 }
