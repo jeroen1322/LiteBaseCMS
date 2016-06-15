@@ -16,6 +16,8 @@ $dbSelect = mysqli_select_db($mysqli, 'litebasecms');
 
 if(! $dbSelect){
     ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link type="text/css" rel="stylesheet" href="resources/style/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="resources/style/style.css">
     <div id="first_run">
         <p>Hello there! This is the first time you've run this program so it needs a little setup before it is usable. <br> Give me a moment...</p>
@@ -30,9 +32,13 @@ if(! $dbSelect){
     <html>
         <head>
             <title>Frontpage - LiteBaseCMS</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <link type="text/css" rel="stylesheet" href="resources/style/materialize.min.css"  media="screen,projection"/>
             <link rel="stylesheet" type="text/css" href="resources/style/style.css">
         </head>
         <body>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <script type="text/javascript" src="resources/js/materialize.min.js"></script>
             <div id="posts">
                 <div id="add">
                     <ul>
