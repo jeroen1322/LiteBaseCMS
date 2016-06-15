@@ -12,7 +12,7 @@ function createDB($mysqli){
     
     $sql = "CREATE DATABASE LiteBaseCMS";
     if($mysqli->query($sql) === TRUE){
-        echo "Database created successfully. Reload to continue.";
+        echo "Database created successfully. Refresh to continue.";
     } else {
         echo "Error creating database.. " . $mysqli->error;
     }
@@ -24,8 +24,8 @@ function createTable($mysqli){
     $table = "CREATE TABLE IF NOT EXISTS articles (
             id int NOT NULL AUTO_INCREMENT,
             PRIMARY KEY(id),
-            title VARCHAR (30) NOT NULL,
-            text VARCHAR (30) NOT NULL,
+            title VARCHAR (100) NOT NULL,
+            text VARCHAR (100) NOT NULL,
             reg_date TIMESTAMP
     )";
     
@@ -48,5 +48,22 @@ function getPost($mysqli){
     } else {
         echo "0 results --- Click <a href='admin.php'>here</a> to add an article";
         echo $mysqli->error;
+    }
+}
+
+function addPost($conn){
+    if(isset($_POST['submit'])){
+
+        $title = $_POST['title'];
+        $text = $_POST['text'];
+
+        $insert = "INSERT INTO articles (title, text) VALUES ('$title', '$text');";
+        
+        if($title != "" && $text != ""){
+            $conn->query($insert);
+            echo "<div id='posts'>The article was added successfully! Click <a href='index.php'>here</a> to view it.</div>";
+        } else {
+            echo "<div id='posts'>Something went wrong while posting the article. <br> Have you filled in the title and text?</div>";
+        }
     }
 }
