@@ -1,0 +1,97 @@
+body{
+    width: 100%;   
+    background-color: #00695C;
+}
+
+#posts{
+    background-color: #BDBDBD;
+    margin: auto;
+    width: 60%;
+    border: 1px solid #E1E4E6;
+    padding: 10px;
+    font-family: calibri;
+}
+
+#posts input[type=text] {
+    display: block;
+    margin: 0;
+    width: 50%;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    
+    padding: 10px;
+    border: solid 1px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+#posts input[type=submit] {
+    background-color: #009688; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#posts input[type=submit]:hover{
+    cursor: pointer;
+}
+
+#title{
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#text{
+    margin-left: 75px;
+    margin-right: 75px;
+    background-color: #D3D3D3;
+    min-height: 90px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#id{
+    font-style: italic;
+    font-size: 10px;
+}
+
+#time{
+    float: right;
+}
+
+#footer{
+    text-align: center;
+    font-size: 15px;
+}
+#add ul {
+    max-width: 300px;
+    margin: 0 auto;
+}
+#add li{
+    display: inline;
+}
+
+#add hr{
+        height: 5px;
+        border: 0;
+        box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+}
+
+#first_run{
+    background-color: #CACBCC;
+    margin: auto;
+    width: 60%;
+    border: 1px solid #E1E4E6;
+    padding: 10px;
+    font-family: calibri;
+}
+
+#del input[type=submit]{
+    font-size: 10px;
+}
