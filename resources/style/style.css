@@ -1,10 +1,10 @@
 body{
     width: 100%;   
-    background-color: #00695C;
+    background-color: #9FD6A5;
 }
 
 #posts{
-    background-color: #BDBDBD;
+    background-color: #C4FFF8;
     margin: auto;
     width: 60%;
     border: 1px solid #E1E4E6;
@@ -13,6 +13,8 @@ body{
 }
 
 #posts input[type=text] {
+    background-color: #42B8AA; 
+    color: white;
     display: block;
     margin: 0;
     width: 50%;
@@ -49,11 +51,12 @@ body{
 #text{
     margin-left: 75px;
     margin-right: 75px;
-    background-color: #D3D3D3;
+    background-color: #F7FFED;
     min-height: 90px;
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    border: 1px solid #42B8AA;
 }
 
 #id{
@@ -70,7 +73,7 @@ body{
     font-size: 15px;
 }
 #add ul {
-    max-width: 300px;
+    max-width: 250px;
     margin: 0 auto;
 }
 #add li{
@@ -84,7 +87,7 @@ body{
 }
 
 #first_run{
-    background-color: #CACBCC;
+    background-color: #C4FFF8;
     margin: auto;
     width: 60%;
     border: 1px solid #E1E4E6;
