@@ -42,13 +42,15 @@ body{
 
 #title{
     text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 #text{
     margin-left: 75px;
     margin-right: 75px;
     background-color: #D3D3D3;
-    min-height: 70px;
+    min-height: 90px;
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -57,6 +59,10 @@ body{
 #id{
     font-style: italic;
     font-size: 10px;
+}
+
+#time{
+    float: right;
 }
 
 #footer{
@@ -86,3 +92,6 @@ body{
     font-family: calibri;
 }
 
+#del input[type=submit]{
+    font-size: 10px;
+}
