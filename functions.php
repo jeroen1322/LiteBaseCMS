@@ -1,5 +1,5 @@
 <?php 
-require 'info.php';
+require (__dir__).'/info.php';
 
 function checkDBCon($mysqli){
     if($mysqli->connect_error){
@@ -12,7 +12,7 @@ function createDB($mysqli){
     
     $sql = "CREATE DATABASE LiteBaseCMS";
     if($mysqli->query($sql) === TRUE){
-        echo "Database created successfully. Reload to continue";
+        echo "Database created successfully. Reload to continue.";
     } else {
         echo "Error creating database.. " . $mysqli->error;
     }
@@ -35,7 +35,7 @@ function createTable($mysqli){
 }
 
 function getPost($mysqli){
-    $getPost = "SELECT * FROM articles";
+    $getPost = "SELECT * FROM articles order by id desc";
     $result = $mysqli->query($getPost);
     
     if($result->num_rows > 0){
@@ -46,7 +46,7 @@ function getPost($mysqli){
             echo "<hr>";
         }
     } else {
-        echo "0 results<br>";
+        echo "0 results --- Click <a href='admin.php'>here</a> to add an article";
         echo $mysqli->error;
     }
 }
