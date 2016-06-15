@@ -1,6 +1,6 @@
 <?php
-require 'info.php';
-require 'functions.php';
+require (__dir__).'/info.php';
+require (__dir__).'/functions.php';
 checkDBCon($mysqli);
 $dbSelect = mysqli_select_db($mysqli, 'litebasecms');
 
