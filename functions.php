@@ -12,7 +12,7 @@ function createDB($mysqli){
     
     $sql = "CREATE DATABASE LiteBaseCMS";
     if($mysqli->query($sql) === TRUE){
-        echo "Database created successfully";
+        echo "Database created successfully. Reload to continue";
     } else {
         echo "Error creating database.. " . $mysqli->error;
     }
@@ -40,9 +40,10 @@ function getPost($mysqli){
     
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            echo "Title: " . $row['title'] . "<br>";
-            echo "ID:  " . $row['id'] . "<br>";
-            echo "Text: " . $row['text'] . "<br>";
+            echo "<div id='title'><h2> " . $row['title'] . "</h2></div>";
+            echo "<div id='text'> " . $row['text'] . "</div><br>";
+            echo "<div id='id'>ID:  " . $row['id'] . "</div>";
+            echo "<hr>";
         }
     } else {
         echo "0 results<br>";
