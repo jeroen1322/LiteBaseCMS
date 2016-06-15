@@ -4,8 +4,9 @@
 
 
 //CONNECTION INFO
-$host = 'YOU HOST HERE';
-$user = 'YOUR USERNAME HERE';
-$passw = 'YOUR PASSWORD HERE';
-$db = 'YOUR DATABASE NAME HERE';
-$mysqli = new mysqli($host, $user, $passw, $db);
+$host = '';
+$user = '';
+$passw = '';
+$db = '';
+$mysqli = new mysqli($host, $user, $passw);
+$conn = new mysqli($host, $user, $passw, $db);
