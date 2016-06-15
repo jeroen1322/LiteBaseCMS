@@ -15,7 +15,7 @@ if($mysqli->connect_error){
 
         $insert = "INSERT INTO articles (title, text) VALUES ('$title', '$text');";
 
-        if($mysqli->query($insert) === TRUE){
+        if($conn->query($insert) === TRUE){
             echo "The article was added succefully.<br><br>";
             echo "<a href='index.php'/><button>Go to homepage</button></a>";
         } else {
