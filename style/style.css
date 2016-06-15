@@ -1,15 +1,43 @@
 body{
     width: 100%;   
-    background-color: #A1A1A1;
+    background-color: #00695C;
 }
 
 #posts{
-    background-color: #CACBCC;
+    background-color: #BDBDBD;
     margin: auto;
     width: 60%;
     border: 1px solid #E1E4E6;
     padding: 10px;
     font-family: calibri;
+}
+
+#posts input[type=text] {
+    display: block;
+    margin: 0;
+    width: 50%;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    
+    padding: 10px;
+    border: solid 1px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+#posts input[type=submit] {
+    background-color: #009688; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#posts input[type=submit]:hover{
+    cursor: pointer;
 }
 
 #title{
