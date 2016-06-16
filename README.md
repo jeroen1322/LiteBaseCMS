@@ -1,4 +1,4 @@
 # LiteBaseCMS
 A small, barebone CMS. Just for practicing MySQL and PHP. :)
 
-#####This is NOT a safe CMS to use for your website.
+#####I would not recommend to use this CMS for your website.
