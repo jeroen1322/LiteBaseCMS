@@ -34,13 +34,14 @@ function createTable($mysqli){
     }
 }
 
-function getPost($mysqli){
-    $getPost = "SELECT * FROM articles order by id desc";
+function getPost($mysqli, $conn, $id){
+    $getPost = "SELECT * FROM articles ORDER BY id DESC";
     $result = $mysqli->query($getPost);
-    
+
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-           // echo "<div id='del'><form action='./index.php' method='post'><input type=submit name='del' value='DEL'></form></div><br>";
+            $id = $row['id'];
+            echo "<div id='del'><form action='' method='post'><input type=submit name='del' value='Delete post'></form></div><br>";
             echo "<div id='title'><h4> " . $row['title'] . "</h4></div>";
             echo "<div id='text'> " . $row['text'] . "</div><br>";
             echo "<div id='id'>ID:  " . $row['id'] . "</div>";
@@ -48,8 +49,18 @@ function getPost($mysqli){
             echo "<hr>";
         }
     } else {
-        echo "0 results --- Click <a href='admin.php'>here</a> to add an article";
+        echo "0 results --- Click <a href='./admin.php'>here</a> to add an article";
         echo $mysqli->error;
+    }
+    
+    //Delete posts
+    if(isset($_POST['del'])){
+        $sql = "DELETE FROM articles WHERE id = $id LIMIT 1";
+        if($conn->query($sql)){
+            echo "Post deleted. -- Refresh to see changes.";
+        } else {
+            echo "Could not delete post";
+        }
     }
 }
 
@@ -63,7 +74,7 @@ function addPost($conn){
         
         if($title != "" && $text != ""){
             $conn->query($insert);
-            echo "<div id='posts'>The article was added successfully! Click <a href='index.php'>here</a> to view it.</div>";
+            echo "<div id='posts'>The article was added successfully! Click <a href='./index.php'>here</a> to view it.</div>";
         } else {
             echo "<div id='posts'>Something went wrong while posting the article. <br> Have you filled in the title and text?</div>";
         }
@@ -71,7 +82,7 @@ function addPost($conn){
 }
 
 function delPost($conn){
-    $deletePost = "DELETE FROM articles WHERE id = 2";
+    $deletePost = "DELETE FROM articles WHERE id = $id";
     if($conn->query($deletePost)){
         echo "<div id='posts'>The post was deleted succesfully!</div";
     } else {
