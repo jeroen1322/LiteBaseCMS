@@ -1,14 +1,11 @@
 <?php
-require '/resources/info.php';
-require 'resources/functions.php';
+require './resources/info.php';
+require './resources/functions.php';
 checkDBCon($mysqli);
 $dbSelect = mysqli_select_db($mysqli, 'litebasecms');
+$id = '';
 
-if(isset($_POST['del'])){
-    delPost($conn);
-}
-
-//Check connection to the MYSQL server
+//Check connection to the MySQL server
 checkDBCon($mysqli);
 //If the database does not exist yet, create it by calling the createDB function
 
@@ -52,7 +49,7 @@ if(! $dbSelect){
                 </div>
                 <?php 
                 if($dbSelect){
-                    getPost($mysqli);
+                    getPost($mysqli, $conn, $id);
                 } 
                 ?>
                 <div id='footer'>
