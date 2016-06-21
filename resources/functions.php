@@ -1,5 +1,5 @@
 <?php 
-require 'resources/info.php';
+require 'info.php';
 
 function checkDBCon($mysqli){
     if($mysqli->connect_error){
@@ -60,12 +60,26 @@ function handlePosts($mysqli, $conn){
                 }
             }
             
+            $edit = 'edit'.$id;
+            $editSubmit = 'editSubmit'.$id;
+            
             if(isset($_POST[$nameEdit])){
                 echo "<form action='' method='post'>
-                        <input type='text' name='edit' placeholder='Put in new text here' autocomplete='no'>
-                        <input type='submit' name='editSubmit' value='Send'>
+                        <input type='text' name='$edit' placeholder='Put in new text here' autocomplete='no'>
+                        <input type='submit' name='$editSubmit' value='Send'>
                     </form>";
-                
+            }
+    
+            if(isset($_POST[$editSubmit])){
+                if($_POST[$edit] != ''){
+                    $input = $_POST[$edit];
+                    $sql = "UPDATE articles SET text='$input' WHERE id=$id";
+                    if($conn->query($sql)){
+                        echo "The post has been updated. Refresh to see the changes.";
+                    } else {
+                        echo "Something went wrong";
+                    }
+                }
             }
             
             echo "<hr>";
