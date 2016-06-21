@@ -72,7 +72,7 @@ function handlePosts($mysqli, $conn){
     
             if(isset($_POST[$editSubmit])){
                 if($_POST[$edit] != ''){
-                    $input = $_POST[$edit];
+                    $input = htmlspecialchars($_POST[$edit]);
                     $sql = "UPDATE articles SET text='$input' WHERE id=$id";
                     if($conn->query($sql)){
                         echo "The post has been updated. Refresh to see the changes.";
