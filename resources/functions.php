@@ -41,13 +41,17 @@ function handlePosts($mysqli, $conn){
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             $id = $row['id'];
-            echo "<div id='del'><form action='' method='post'><input type=submit name='$id' value='Delete post'></form></div><br>";
+            $nameDel = 'del'.$id;
+            $nameEdit = 'edit'.$id;
+            echo "<div id='del'><form action='' method='post'><input type=submit name='$nameDel' value='Delete post'></form></div>";
+            echo "<div id='edit'><form action='' method='post'><input type=submit name='$nameEdit' value='Edit post'></form></div><br>";
             echo "<div id='title'><h4> " . $row['title'] . "</h4></div>";
             echo "<div id='text'> " . $row['text'] . "</div><br>";
             echo "<div id='id'>ID:  " . $id . "</div>";
             echo "<div id='time'>Posted on: " . $row['reg_date'] . "</div><br>";
             echo "<br>";
-            if(isset($_POST[$id])){
+            
+            if(isset($_POST[$nameDel])){
                 $sql = "DELETE FROM articles WHERE id = $id LIMIT 1";
                 if($conn->query($sql)){
                     echo "Post deleted. -- Refresh to see changes.";
@@ -55,6 +59,15 @@ function handlePosts($mysqli, $conn){
                     echo "Could not delete post";
                 }
             }
+            
+            if(isset($_POST[$nameEdit])){
+                echo "<form action='' method='post'>
+                        <input type='text' name='edit' placeholder='Put in new text here' autocomplete='no'>
+                        <input type='submit' name='editSubmit' value='Send'>
+                    </form>";
+                
+            }
+            
             echo "<hr>";
             
         }
