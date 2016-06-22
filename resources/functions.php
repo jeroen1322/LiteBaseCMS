@@ -2,7 +2,6 @@
 require 'info.php';
 
 // Check the if there is a Database connection. Use $mysqli from info.php for this.
-
 function checkDBCon($mysqli)
 {
 
@@ -14,7 +13,6 @@ function checkDBCon($mysqli)
 }
 
 // Function to create a DataBase called 'litebasecms' and a table called 'articles'
-
 function createDB($mysqli)
 {
 
@@ -34,7 +32,6 @@ function createDB($mysqli)
 
 function createTable($mysqli)
 {
-
 	// Check create table 'articles' if it doesn't exist already
 
 	$table = "CREATE TABLE IF NOT EXISTS articles (
@@ -54,7 +51,6 @@ function createTable($mysqli)
 
 function handlePosts($mysqli, $conn)
 {
-
 	// SQL query to get all the articles
 
 	$getPost = "SELECT * FROM articles ORDER BY id DESC";
@@ -66,13 +62,11 @@ function handlePosts($mysqli, $conn)
 		while ($row = $result->fetch_assoc()) {
 
 			// Declaring some fars
-
 			$id = $row['id']; // Get the ID of a post from the colum id in the DB
 			$nameDel = 'del' . $id; // The HTML elements will have this name with the id number
 			$nameEdit = 'edit' . $id; // The HTML elements will have this name with the id number
 
 			// Echo a whole bunch of HTML stuff to make it look pretty
-
 			echo "<div id='del'><form action='' method='post'><input type=submit name='$nameDel' value='Delete post'></form></div>";
 			echo "<div id='edit'><form action='' method='post'><input type=submit name='$nameEdit' value='Edit post'></form></div><br />";
 			echo "<div id='title'><h4> " . $row['title'] . "</h4></div>";
@@ -82,9 +76,8 @@ function handlePosts($mysqli, $conn)
 			echo "<br />";
 
 			// If the delete button is clicked, run this SQL query.
-			// The reason $nameDel is what it is, is so any if that button will be clicked, the command will run.
-			// Otherwise, if a user clicker del button on post 2, post 1 would be deleted. Now only post 2.
-
+			// The reason $nameDel is what it is, is so only if that button will be clicked, the command will run.
+			// Otherwise, if a user clicks the del button on post 2, post 1 would be deleted. Now only post 2.
 			if (isset($_POST[$nameDel])) {
 
 				// SQL query to delete the row where the ID is the ID of the post where the delete button was pressed.
@@ -110,7 +103,6 @@ function handlePosts($mysqli, $conn)
 			// If the delete button is clicked, run a SQL query.
 			// The reason the vars have $id in it, is to that only that button will run that specific SQL query
 			// Otherwise, if a user clicker edit button on post 2, post 1 would be edited. Now only post 2.
-
 			if (isset($_POST[$editSubmit])) {
 
 				// Check if there is something filled in...
@@ -125,7 +117,7 @@ function handlePosts($mysqli, $conn)
 						echo "The post has been updated. Refresh to see the changes.";
 					}
 					else {
-						echo "Something went wrong. Please try again";
+						echo "Something went wrong. Please try again.";
 					}
 				}
 			}
@@ -146,11 +138,9 @@ function addPost($conn)
 		$text = htmlspecialchars($_POST['text']); //Use htmlspecialchars to sanitze input
 
 		// SQL query to insert the text the user put in, in to the DB
-
 		$insert = "INSERT INTO articles (title, text) VALUES ('$title', '$text');";
 
 		// If the user filled in text, then run the SQL query. If not, echo some text to say like hey fill something in.
-
 		if ($title != "" && $text != "") {
 			$conn->query($insert);
 			echo "<div id='posts'>The article was added successfully! Click <a href='./index.php'>here</a> to view it.</div>";
