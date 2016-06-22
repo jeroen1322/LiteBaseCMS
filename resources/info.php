@@ -1,6 +1,6 @@
 <?php
 //This is super secret.... Sssshhhh
-
+//Put this file outside of public_html and change the links to this file. 
 
 //CONNECTION INFO
 $host = 'localhost';
